@@ -65,7 +65,7 @@ mkdir data/mothur
 mkdir data/process
 mkdir data/references
 mkdir code
-
+mv data/raw/HMP_MOCK* data/references/HMP_MOCK.fasta
 
 #https://mothur.org/wiki/Silva_reference_files
 wget -P data/references https://mothur.org/w/images/b/b4/Silva.nr_v128.tgz
