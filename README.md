@@ -2,11 +2,11 @@
 Repository to create and maintain an Amazon AMI for mothur
 
 * Create an Ubuntu `t2.micro` instance create the SSH, HTTP, HTTPS, and Custom rules
-* Log in with `ssh ubuntu@[Public DNS]` (may need to do `ssh -i .ssh/mothur.pem ubuntu@ec2-54-234-233-240.compute-1.amazonaws.com`
+* Log in with `ssh ubuntu@[Public DNS]` (may need to do `ssh -i .ssh/MyKeyPair.pem ubuntu@ec2-54-234-233-240.compute-1.amazonaws.com`
 
 ````
 #install R and dependencies
-sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list' #replace xenial with current version of ubuntu
+sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic-cran35/" >> /etc/apt/sources.list' #replace xenial with current version of ubuntu
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 sudo apt-get update
@@ -15,22 +15,22 @@ sudo apt-get -y install libcurl4-gnutls-dev libxml2-dev libssl-dev
 
 
 #install critical packages
-sudo su - -c "R -e \"install.packages('devtools', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('tidyverse', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('rmarkdown', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('knitr', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('devtools', repos='https://cran.mtu.edu/')\""
+sudo su - -c "R -e \"install.packages('tidyverse', repos='https://cran.mtu.edu/')\""
+sudo su - -c "R -e \"install.packages('rmarkdown', repos='https://cran.mtu.edu/')\""
+sudo su - -c "R -e \"install.packages('knitr', repos='https://cran.mtu.edu/')\""
 
 
 #see https://www.rstudio.com/products/rstudio/download-server/
 sudo apt-get install gdebi-core
-RSTUDIO=rstudio-server-1.1.453-amd64.deb #update RSTUDIO server version
+RSTUDIO=rstudio-server-1.2.1335-amd64.deb #update RSTUDIO server version
 wget https://download2.rstudio.org/$RSTUDIO
 sudo gdebi $RSTUDIO
 rm $RSTUDIO
 
 
 #Update mothur version
-wget https://github.com/mothur/mothur/releases/download/v1.40.4/Mothur.linux_64.zip
+wget https://github.com/mothur/mothur/releases/download/v1.42.0/Mothur.linux_64.zip
 unzip Mothur.linux_64.zip
 rm -rf Mothur.linux_64.zip __MACOSX
 
