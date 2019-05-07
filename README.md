@@ -1,7 +1,7 @@
 # mothur_ami
 Repository to create and maintain an Amazon AMI for mothur
 
-* Create an Ubuntu `t2.micro` instance create the SSH, HTTP, HTTPS, and Custom rules
+* Create an Ubuntu `t3.micro` instance create the SSH, HTTP, HTTPS, and Custom rules
 * Log in with `ssh ubuntu@[Public DNS]` (may need to do `ssh -i .ssh/MyKeyPair.pem ubuntu@ec2-54-234-233-240.compute-1.amazonaws.com`
 
 ````
@@ -65,14 +65,14 @@ mkdir data/references
 mkdir code
 
 #https://mothur.org/wiki/Silva_reference_files
-wget -P data/references https://mothur.org/w/images/b/b4/Silva.nr_v128.tgz
-#tar xvzf data/references/Silva.nr_v128.tgz -C data/references
-#rm data/references/Silva.nr_v128.tgz
+wget -P data/references https://mothur.org/w/images/3/32/Silva.nr_v132.tgz
+#tar xvzf data/references/Silva.nr_v132.tgz -C data/references
+#rm data/references/Silva.nr_v132.tgz
 
 #https://mothur.org/wiki/Silva_reference_files
-wget -P data/references https://mothur.org/w/images/a/a4/Silva.seed_v128.tgz
-tar xvzf data/references/Silva.seed_v128.tgz -C data/references
-rm data/references/Silva.seed_v128.tgz data/references/README.*
+wget -P data/references https://mothur.org/w/images/7/71/Silva.seed_v132.tgz
+tar xvzf data/references/Silva.seed_v132.tgz -C data/references
+rm data/references/Silva.seed_v132.tgz data/references/README.*
 
 #https://mothur.org/wiki/RDP_reference_files
 wget -P data/references https://mothur.org/w/images/c/c3/Trainset16_022016.pds.tgz
