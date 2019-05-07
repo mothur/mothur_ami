@@ -1,7 +1,7 @@
 # mothur_ami
 Repository to create and maintain an Amazon AMI for mothur
 
-* Create an Ubuntu `t3.micro` instance create the SSH, HTTP, HTTPS, and Custom rules
+* Create an Ubuntu `t3.large` instance create the SSH, HTTP, HTTPS, and Custom (port 8787) rules
 * Log in with `ssh ubuntu@[Public DNS]` (may need to do `ssh -i .ssh/MyKeyPair.pem ubuntu@ec2-54-234-233-240.compute-1.amazonaws.com`
 
 ````
@@ -24,7 +24,7 @@ sudo su - -c "R -e \"install.packages('knitr', repos='https://cran.mtu.edu/')\""
 #see https://www.rstudio.com/products/rstudio/download-server/
 sudo apt-get install gdebi-core
 RSTUDIO=rstudio-server-1.2.1335-amd64.deb #update RSTUDIO server version
-wget https://download2.rstudio.org/$RSTUDIO
+wget https://download2.rstudio.org/server/bionic/amd64/$RSTUDIO
 sudo gdebi $RSTUDIO
 rm $RSTUDIO
 
@@ -99,8 +99,9 @@ sudo chgrp -R mothur ./
 * Go to `ec2-35-174-168-176.compute-1.amazonaws.com:8787` to confirm that RStudio fires up - use mothur/mothur as username/password combination
 * In AWS dashboard, select instance, go to Image -> Create Image
 * Set the volume size to 20 GB
-* Name the volume `mothur-1.40.4`
+* Name the volume `mothur-1.42.0`
 * In description insert `officially supported version of mothur AMI`
+* Click on the link to see images
 * Wait for the image to be generated (may take a while to show up)
 * Once created, select on the image under "AMIs" and select "Permissions", "Edit", and then "Public"
 * Run through [mothur SOP](https://mothur.org/wiki/EDAMAME) to make sure everything works... 
